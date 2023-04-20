@@ -1,0 +1,5 @@
+external:
+  api:
+    blink-it: https://blinkit.com/v6/search/products
+server:
+  port: 8084
