@@ -1,5 +1,8 @@
 external:
   api:
     blink-it: https://blinkit.com/v6/search/products
+    big-basket: https://www.bigbasket.com/custompage/getsearchdata/
+    zepto: https://www.zeptonow.com/api/search
+  user-agent: PostmanRuntime/7.29.2
 server:
   port: 8084
