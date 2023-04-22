@@ -7,10 +7,16 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class BigBasketProduct {
-    private String sp;
-    private String w;
-    private String p_img_url;
-    private String p_desc;
+    @JsonProperty(value = "sp")
+    private String price;
+    @JsonProperty(value = "w")
+    private String weight;
+    @JsonProperty(value = "p_img_url")
+    private String imageUrl;
+    @JsonProperty(value = "p_desc")
+    private String name;
+    @JsonProperty(value = "sku")
+    private Integer productId;
     @JsonProperty(value = "all_prods")
     private BigBasketProduct[] variants;
 }

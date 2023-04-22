@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.springframework.util.CollectionUtils;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -15,28 +14,35 @@ import java.util.Objects;
 public class ZeptoProduct {
 
     private String availableQuantity;
-    private String sellingPrice;
+
+    private String price;
     private String weight;
     private String imageUrl;
     private String name;
 
     @JsonProperty("productVariant")
-    private void mapProductVariant(Map<String,Object> productVariant){
-        if(Objects.nonNull(productVariant)) {
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    private void mapProductVariant(Map<String, Object> productVariant) {
+        if (Objects.nonNull(productVariant)) {
             this.weight = (String) productVariant.get("formattedPacksize");
             List<Map<String, String>> images = (List<Map<String, String>>) productVariant.get("images");
-            if(!CollectionUtils.isEmpty(images)) {
+            if (!CollectionUtils.isEmpty(images)) {
                 //TODO
-                this.imageUrl = "https://cdn.zeptonow.com/production///tr:w-200,ar-1500-1500,pr-true,f-webp,q-80/" +
-                        images.get(0).get("path");
+                this.imageUrl = "https://cdn.zeptonow.com/production///tr:w-200,ar-1500-1500,pr-true,f-webp,q-80/" + images.get(0).get("path");
             }
         }
     }
 
     @JsonProperty("product")
-    private void mapProductName(Map<String,String> product){
-        if(Objects.nonNull(product)) {
-            this.name = product.get("name");
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    private void mapProductName(Map<String, Object> product) {
+        if (Objects.nonNull(product)) {
+            this.name = (String) product.get("name");
         }
+    }
+
+    @JsonProperty(value = "sellingPrice")
+    private void mapSellingPrice(String sellingPrice) {
+        this.price = String.valueOf(Integer.parseInt(sellingPrice) / 100);
     }
 }

@@ -14,16 +14,16 @@ import java.util.Map;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ZeptoResponse {
 
-    List<ZeptoProduct> zeptoProducts;
+    List<ZeptoProduct> products;
 
     @JsonProperty("layout")
     private void mapJsonObject(List<Map<String, Object>> layOuts) {
         List<ZeptoProduct> products = new ArrayList<>();
         if (!CollectionUtils.isEmpty(layOuts)) {
-            layOuts.forEach(layOut -> {
-                mapLayOut(products, layOut);
-            });
-            this.zeptoProducts = products;
+            layOuts.forEach(layOut ->
+                    mapLayOut(products, layOut)
+            );
+            this.products = products;
         }
     }
 
