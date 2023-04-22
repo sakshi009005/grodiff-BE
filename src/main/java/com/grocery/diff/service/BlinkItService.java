@@ -12,19 +12,16 @@ import org.springframework.web.client.RestTemplate;
 public class BlinkItService {
 
     private final RestTemplate restTemplate;
-
+    @Value("${external.user-agent}")
+    public String userAgent;
     @Value("${external.api.blink-it}")
     private String blinkItApi;
 
-    @Value("${external.user-agent}")
-    public String userAgent;
-
-    public void getProduct(String query, String longitude, String latitude) {
+    public ResponseEntity<BlinkItResponse> getProduct(String query, String longitude, String latitude) {
         HttpEntity<Object> request = getObjectHttpEntity(longitude, latitude);
 
-        ResponseEntity<BlinkItResponse> response = restTemplate.exchange(String.format("%s%s%s", blinkItApi, "?start=0&size=20&search_type=7&q=", query),
+        return restTemplate.exchange(String.format("%s%s%s", blinkItApi, "?start=0&size=-1&search_type=7&q=", query),
                 HttpMethod.GET, request, BlinkItResponse.class);
-        //BlinkItResponse object= (BlinkItResponse) response.getBody();
     }
 
     private HttpEntity<Object> getObjectHttpEntity(String longitude, String latitude) {

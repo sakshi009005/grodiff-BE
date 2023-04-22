@@ -1,12 +1,15 @@
 package com.grocery.diff.controller;
 
+import com.grocery.diff.model.BigBasketResponse;
 import com.grocery.diff.service.BigbasketService;
-import com.grocery.diff.service.BlinkItService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping(path = "/bb")
@@ -16,8 +19,8 @@ public class BigBasketController {
     private final BigbasketService bigbasketService;
 
     @GetMapping(path = "/search")
-    private void getProduct(@RequestParam String query) {
-        bigbasketService.getProduct(query);
+    private ResponseEntity<BigBasketResponse> getProduct(@RequestParam String query) throws IOException {
+        return bigbasketService.getProduct(query);
     }
 
 }

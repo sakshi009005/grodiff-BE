@@ -15,7 +15,7 @@ import java.util.Objects;
 @Data
 public class BigBasketResponse {
 
-    private List<BigBasketProduct> bigBasketProduct;
+    private List<BigBasketProduct> products;
 
     @JsonProperty("json_data")
     private void mapJsonObject(Map<String, Object> jsonData) {
@@ -26,7 +26,7 @@ public class BigBasketResponse {
                 mapProduct(products, parentObject);
             }
         }
-        this.bigBasketProduct = products;
+        this.products = products;
     }
 
     private void mapProduct(List<BigBasketProduct> products, List parentObject) {
