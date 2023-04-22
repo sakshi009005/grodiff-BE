@@ -20,7 +20,5 @@ public class ZeptoController {
     @GetMapping(path = "/search")
     public ResponseEntity<ZeptoResponse> getProduct(@RequestBody ZeptoRequest zeptoRequest) {
         return zeptoService.getProduct(zeptoRequest);
-
     }
-
 }

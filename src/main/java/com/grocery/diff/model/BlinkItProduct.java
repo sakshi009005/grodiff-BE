@@ -1,5 +1,6 @@
 package com.grocery.diff.model;
 
+
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
@@ -11,6 +12,7 @@ import java.util.List;
 public class BlinkItProduct {
 
     private String price;
+
     @JsonAlias(value = "unit")
     private String weight;
     @JsonAlias(value = "inventory")
@@ -22,4 +24,5 @@ public class BlinkItProduct {
     private Integer productId;
     @JsonAlias(value = "variant_info")
     private List<BlinkItProduct> variants;
+
 }

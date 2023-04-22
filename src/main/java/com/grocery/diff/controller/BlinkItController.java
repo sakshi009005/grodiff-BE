@@ -17,9 +17,10 @@ public class BlinkItController {
     private final BlinkItService blinkItService;
 
     @GetMapping(path = "/search")
+
     public ResponseEntity<BlinkItResponse> getProduct(@RequestParam String query,
-                                                       @RequestParam(name = "lon") String longitude,
-                                                       @RequestParam(name = "lat") String latitude) {
+                                                      @RequestParam(name = "lon") String longitude,
+                                                      @RequestParam(name = "lat") String latitude) {
         return blinkItService.getProduct(query, longitude, latitude);
     }
 
