@@ -16,7 +16,7 @@ public class BigBasketController {
     private final BigbasketService bigbasketService;
 
 
-    @GetMapping(path = "/search",produces="application/json")
+    @GetMapping(path = "/search", produces = "application/json")
     @CrossOrigin(origins = "*")
     public ResponseEntity<BigBasketResponse> getProduct(@RequestParam String query) throws IOException {
         return ResponseEntity.ok(bigbasketService.getProduct(query).getBody());

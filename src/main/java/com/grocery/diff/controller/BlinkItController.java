@@ -15,10 +15,7 @@ public class BlinkItController {
 
     @GetMapping(path = "/search")
     @CrossOrigin(origins = "*")
-    public ResponseEntity<BlinkItResponse> getProduct(@RequestParam String query,
-                                                      @RequestParam(name = "lon") String longitude,
-                                                      @RequestParam(name = "lat") String latitude) {
+    public ResponseEntity<BlinkItResponse> getProduct(@RequestParam String query, @RequestParam(name = "lon") String longitude, @RequestParam(name = "lat") String latitude) {
         return ResponseEntity.ok(blinkItService.getProduct(query, longitude, latitude).getBody());
     }
-
 }

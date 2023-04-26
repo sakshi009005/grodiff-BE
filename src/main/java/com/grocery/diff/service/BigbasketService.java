@@ -26,6 +26,4 @@ public class BigbasketService extends GrodiffService {
 //TODO pagination
         return restTemplate.exchange(String.format("%s%s%s", bigBasketUrl, "?type=deck&page=20&slug=", query), HttpMethod.GET, getObjectHttpEntity(CookieService.showCookies(bigBasketUrlForCookie), null, null), BigBasketResponse.class);
     }
-
-
 }

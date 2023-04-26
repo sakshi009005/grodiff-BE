@@ -18,6 +18,7 @@ import java.util.Objects;
 public class ZeptoService extends GrodiffService {
 
     private final RestTemplate restTemplate;
+
     @Value("${external.api.zepto}")
     private String zeptoUrl;
 
@@ -26,6 +27,7 @@ public class ZeptoService extends GrodiffService {
 
     public ResponseEntity<ZeptoResponse> getProduct(ZeptoRequest zeptoRequest) {
         HttpEntity<Object> request = getObjectHttpEntity(zeptoRequest);
+
         return restTemplate.exchange(zeptoUrl, HttpMethod.POST, request, ZeptoResponse.class);
     }
 
@@ -34,6 +36,7 @@ public class ZeptoService extends GrodiffService {
     }
 
     private HttpHeaders getHttpHeaders() {
+
         HttpHeaders headers = super.getHttpHeaders(zeptoCookie, null, null);
         headers.set("storeId", getStoreId());
         return headers;
