@@ -1,5 +1,6 @@
 package com.grocery.diff.service;
 
+import com.grocery.diff.exception.ProductNotFetchedException;
 import com.grocery.diff.model.BigBasketResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,7 +24,7 @@ public class BigbasketService extends GrodiffService {
 
     public ResponseEntity<BigBasketResponse> getProduct(String query) throws IOException {
 
-//TODO pagination
         return restTemplate.exchange(String.format("%s%s%s", bigBasketUrl, "?type=deck&page=20&slug=", query), HttpMethod.GET, getObjectHttpEntity(CookieService.showCookies(bigBasketUrlForCookie), null, null), BigBasketResponse.class);
+
     }
 }

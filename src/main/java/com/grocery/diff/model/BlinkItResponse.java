@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @JsonIgnoreProperties
-public class BlinkItResponse {
+public class BlinkItResponse extends ErrorResponse{
 
     private List<BlinkItProduct> products;
 

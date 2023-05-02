@@ -31,7 +31,7 @@ public class ZeptoProduct {
             this.weight = (String) productVariant.get("formattedPacksize");
             List<Map<String, String>> images = (List<Map<String, String>>) productVariant.get("images");
             if (!CollectionUtils.isEmpty(images)) {
-                //TODO
+                //TODO move url to config file
                 this.imageUrl = "https://cdn.zeptonow.com/production///tr:w-200,ar-1512-2513,pr-true,f-webp,q-80/" + images.get(0).get("path");
             }
         }

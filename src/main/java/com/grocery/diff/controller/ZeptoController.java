@@ -19,6 +19,12 @@ public class ZeptoController {
     @PostMapping(path = "/search")
     @CrossOrigin(origins = "*")
     public ResponseEntity<ZeptoResponse> getProduct(@RequestBody ZeptoRequest zeptoRequest) {
-        return zeptoService.getProduct(zeptoRequest);
+        try {
+            return ResponseEntity.ok(zeptoService.getProduct(zeptoRequest).getBody());
+        } catch (Exception e) {
+            ZeptoResponse zeptoResponse = new ZeptoResponse();
+            zeptoResponse.setErrorMsg(e.getMessage());
+            return ResponseEntity.internalServerError().body(zeptoResponse);
+        }
     }
 }

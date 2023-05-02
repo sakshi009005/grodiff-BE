@@ -3,6 +3,7 @@ package com.grocery.diff.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.util.CollectionUtils;
 
@@ -13,7 +14,7 @@ import java.util.Objects;
 
 @JsonIgnoreProperties
 @Data
-public class BigBasketResponse {
+public class BigBasketResponse extends ErrorResponse{
 
     private List<BigBasketProduct> products;
 

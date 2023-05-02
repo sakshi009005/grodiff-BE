@@ -12,7 +12,7 @@ import java.util.Map;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ZeptoResponse {
+public class ZeptoResponse extends ErrorResponse{
 
     List<ZeptoProduct> products;
 

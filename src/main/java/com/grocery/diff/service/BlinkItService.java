@@ -23,6 +23,7 @@ public class BlinkItService extends GrodiffService {
 
         return restTemplate.exchange(String.format("%s%s%s", blinkItApi, "?start=0&size=-1&search_type=7&q=", query),
                 HttpMethod.GET, getObjectHttpEntity(blinkItCookie, longitude, latitude), BlinkItResponse.class);
+
     }
 
 }

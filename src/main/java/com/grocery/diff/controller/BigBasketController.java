@@ -1,5 +1,6 @@
 package com.grocery.diff.controller;
 
+import com.grocery.diff.exception.ProductNotFetchedException;
 import com.grocery.diff.model.BigBasketResponse;
 import com.grocery.diff.service.BigbasketService;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +19,15 @@ public class BigBasketController {
 
     @GetMapping(path = "/search", produces = "application/json")
     @CrossOrigin(origins = "*")
-    public ResponseEntity<BigBasketResponse> getProduct(@RequestParam String query) throws IOException {
-        return ResponseEntity.ok(bigbasketService.getProduct(query).getBody());
+    public ResponseEntity<BigBasketResponse> getProduct(@RequestParam String query) {
+        try {
+            return ResponseEntity.ok(bigbasketService.getProduct(query).getBody());
+        }catch (Exception e){
+            BigBasketResponse bigBasketResponse= new BigBasketResponse();
+            bigBasketResponse.setErrorMsg(e.getMessage());
+            return ResponseEntity.internalServerError().body(bigBasketResponse);
+        }
+
     }
 
 }
